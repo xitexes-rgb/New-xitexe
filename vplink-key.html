@@ -4,40 +4,36 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#020712">
-<title>XITEXE // SECURE ROUTE</title>
+<title>XITEXE // RETURN</title>
 <style>
-:root{--bg:#020712;--panel:#06172b;--line:rgba(92,220,255,.3);--cyan:#63e8ff;--green:#55f0ad;--pink:#ff57c7;--muted:#7896b4}*{box-sizing:border-box}body{margin:0;min-height:100vh;display:grid;place-items:center;padding:22px;background:radial-gradient(circle at 50% 10%,rgba(28,100,200,.3),transparent 42%),linear-gradient(145deg,#01040b,#061426 58%,#020610);color:#eafaff;font-family:Arial,sans-serif}.shell{width:min(100%,430px);padding:1px;border:1px solid var(--line);box-shadow:0 30px 110px rgba(0,0,0,.7)}.panel{padding:26px 22px;background:linear-gradient(160deg,rgba(6,23,43,.98),rgba(2,8,18,.99));text-align:center}.head{display:flex;gap:9px;align-items:center;color:#86a9c5;font:700 9px monospace;letter-spacing:1.4px;text-align:left}.head b{margin-left:auto;color:var(--green);font-size:8px}.dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 14px var(--green)}.brand{margin-top:32px;font:900 34px monospace;text-shadow:0 0 20px rgba(99,232,255,.4)}.brand span{color:var(--pink)}.sub{margin-top:10px;color:var(--muted);font:700 9px monospace;letter-spacing:3px}.status{margin:25px 0 18px;padding:12px;border:1px solid rgba(99,232,255,.16);background:rgba(4,18,34,.7);color:#a9d9e9;font:700 10px/1.7 monospace;text-transform:uppercase}.status strong{color:var(--green)}.continue{display:block;width:100%;margin-top:16px;padding:15px;border:1px solid rgba(174,244,255,.6);background:linear-gradient(100deg,#2c7bed,#63e8ff);color:#02101c;font:900 12px Arial;letter-spacing:1px;text-decoration:none}.foot{margin-top:18px;color:#52718f;font:700 8px/1.7 monospace}.foot strong{color:#75ddff}.error{color:#ff8ecf;font:700 12px/1.6 monospace;padding:25px 4px}
+:root{--bg:#020712;--panel:#071a2d;--line:rgba(92,220,255,.24);--cyan:#63e8ff;--green:#55f0ad;--pink:#ff57c7;--muted:#7896b4}*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:var(--bg);color:#eafaff;font-family:Inter,Arial,sans-serif}body{min-height:100vh;display:grid;place-items:center;padding:22px;background:radial-gradient(circle at 50% 5%,rgba(28,100,200,.3),transparent 40%),linear-gradient(145deg,#01040b,#061426 58%,#020610)}.shell{width:min(100%,560px);border:1px solid var(--line);box-shadow:0 30px 110px rgba(0,0,0,.7)}.panel{padding:30px 24px;background:linear-gradient(160deg,rgba(6,23,43,.98),rgba(2,8,18,.99));text-align:center}.head{display:flex;gap:9px;align-items:center;color:#86a9c5;font:700 9px monospace;letter-spacing:1.4px;text-align:left}.head b{margin-left:auto;color:var(--green);font-size:8px}.dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 14px var(--green)}.brand{margin-top:34px;font:900 34px monospace;text-shadow:0 0 20px rgba(99,232,255,.4)}.brand span{color:var(--pink)}.sub{margin-top:10px;color:var(--muted);font:700 9px monospace;letter-spacing:3px}.status{margin:26px 0 18px;padding:15px;border:1px solid rgba(99,232,255,.16);background:rgba(4,18,34,.7);color:#a9d9e9;font:700 10px/1.7 monospace;text-transform:uppercase}.status strong{color:var(--green)}.continue{display:block;width:100%;margin-top:16px;padding:15px;border:1px solid rgba(174,244,255,.6);background:linear-gradient(100deg,#2c7bed,#63e8ff);color:#02101c;font:900 12px Arial;letter-spacing:1px;text-decoration:none}.foot{margin-top:18px;color:#52718f;font:700 8px/1.7 monospace}.foot strong{color:#75ddff}.error{color:#ff8ecf;font:700 12px/1.6 monospace;padding:25px 4px}
 </style>
 </head>
 <body>
 <main class="shell"><section class="panel">
-<div class="head"><i class="dot"></i><span>SYS://XITEXE/KEY-ROUTE</span><b>SECURE</b></div>
-<div class="brand">XITEXE <span>ROUTE</span></div>
-<div class="sub" id="sub">CONNECTING TO KEY ISSUER</div>
-<div class="status" id="status">&gt; SESSION HANDSHAKE ... <strong>CONNECTING</strong></div>
-<a class="continue" id="continue" href="https://owxkutsbecdgmasyiqkf.supabase.co/functions/v1/vplink">OPEN SECURE KEY PAGE ↗</a>
-<div class="foot">KEYS ARE <strong>ONE-TIME</strong> &nbsp;•&nbsp; EXPIRE AUTOMATICALLY<br>RETURN TO XITEXE AFTER COPYING</div>
+<div class="head"><i class="dot"></i><span>SYS://XITEXE/RETURN-ROUTE</span><b>SECURE</b></div>
+<div class="brand">XITEXE <span>RETURN</span></div>
+<div class="sub" id="sub">RESTORING DOWNLOAD SESSION</div>
+<div class="status" id="status">&gt; RETURN CHANNEL ... <strong>CONNECTING</strong></div>
+<a class="continue" id="continue" href="https://xitexes-rgb.github.io/New-xitexe/">RETURN TO XITEXE ↗</a>
+<div class="foot">PASTE THE COPIED KEY IN THE GET FILE PANEL<br>KEYS ARE <strong>ONE-TIME</strong> &nbsp;•&nbsp; EXPIRE AUTOMATICALLY</div>
 </section></main>
 <script>
-const SUPABASE_VPLINK_URL='https://owxkutsbecdgmasyiqkf.supabase.co/functions/v1/vplink';
-const session=new URLSearchParams(location.search).get('session');
+const MAIN_URL='https://xitexes-rgb.github.io/New-xitexe/';
+const params=new URLSearchParams(location.search);
+const session=params.get('session')||'';
+const itemId=params.get('itemId')||'';
 const status=document.getElementById('status');
 const link=document.getElementById('continue');
-if(/^https:\/\//i.test(SUPABASE_VPLINK_URL)&&session){
-  const destination=SUPABASE_VPLINK_URL+'?action=key&session='+encodeURIComponent(session);
+if(session&&itemId){
+  const destination=MAIN_URL+'?session='+encodeURIComponent(session)+'&itemId='+encodeURIComponent(itemId);
   link.href=destination;
-  status.innerHTML='&gt; KEY ISSUER ... <strong>READY</strong>';
-  setTimeout(()=>window.location.replace(destination),500);
-}else if(!session){
-  document.getElementById('sub').textContent='NO ACTIVE SESSION';
-  status.innerHTML='&gt; SESSION STATUS ... <strong style="color:#ff76c8">DENIED</strong>';
-  link.href='https://xitexes-rgb.github.io/New-xitexe/';
-  link.textContent='RETURN TO XITEXE ↗';
+  status.innerHTML='&gt; SESSION RESTORED ... <strong>RETURN TO VERIFY</strong>';
+  setTimeout(()=>window.location.replace(destination),450);
 }else{
-  document.getElementById('sub').textContent='BACKEND URL REQUIRED';
-  status.innerHTML='&gt; CONFIGURATION ... <strong style="color:#ff76c8">PENDING</strong>';
-  link.href='https://xitexes-rgb.github.io/New-xitexe/';
-  link.textContent='RETURN TO XITEXE ↗';
+  document.getElementById('sub').textContent='NO ACTIVE DOWNLOAD SESSION';
+  status.innerHTML='&gt; SESSION STATUS ... <strong style="color:#ff76c8">DENIED</strong>';
+  link.href=MAIN_URL;
 }
 </script>
 </body>
