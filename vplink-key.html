@@ -15,16 +15,16 @@
 <div class="brand">XITEXE <span>ROUTE</span></div>
 <div class="sub" id="sub">CONNECTING TO KEY ISSUER</div>
 <div class="status" id="status">&gt; SESSION HANDSHAKE ... <strong>CONNECTING</strong></div>
-<a class="continue" id="continue" href="https://script.google.com/">OPEN SECURE KEY PAGE ↗</a>
+<a class="continue" id="continue" href="https://owxkutsbecdgmasyiqkf.supabase.co/functions/v1/vplink">OPEN SECURE KEY PAGE ↗</a>
 <div class="foot">KEYS ARE <strong>ONE-TIME</strong> &nbsp;•&nbsp; EXPIRE AUTOMATICALLY<br>RETURN TO XITEXE AFTER COPYING</div>
 </section></main>
 <script>
-const NETLIFY_SITE_URL='REPLACE_WITH_NETLIFY_SITE_URL';
+const SUPABASE_VPLINK_URL='https://owxkutsbecdgmasyiqkf.supabase.co/functions/v1/vplink';
 const session=new URLSearchParams(location.search).get('session');
 const status=document.getElementById('status');
 const link=document.getElementById('continue');
-if(/^https:\/\//i.test(NETLIFY_SITE_URL)&&session){
-  const destination=NETLIFY_SITE_URL+'/api/key?session='+encodeURIComponent(session);
+if(/^https:\/\//i.test(SUPABASE_VPLINK_URL)&&session){
+  const destination=SUPABASE_VPLINK_URL+'?action=key&session='+encodeURIComponent(session);
   link.href=destination;
   status.innerHTML='&gt; KEY ISSUER ... <strong>READY</strong>';
   setTimeout(()=>window.location.replace(destination),500);
