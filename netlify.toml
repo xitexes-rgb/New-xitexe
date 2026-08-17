@@ -1,27 +1,5 @@
 [build]
   publish = "."
-  functions = "."
 
-[[redirects]]
-  from = "/api/begin"
-  to = "/.netlify/functions/api?route=begin"
-  status = 200
-  force = true
-
-[[redirects]]
-  from = "/api/key"
-  to = "/.netlify/functions/api?route=key"
-  status = 200
-  force = true
-
-[[redirects]]
-  from = "/api/verify"
-  to = "/.netlify/functions/api?route=verify"
-  status = 200
-  force = true
-
-[[redirects]]
-  from = "/api/health"
-  to = "/.netlify/functions/api?route=health"
-  status = 200
-  force = true
+[functions]
+  directory = "netlify/functions"
