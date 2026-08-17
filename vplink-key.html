@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#020712">
+  <title>XITEXE // SECURE KEY</title>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-functions.js"></script>
+  <style>
+    :root{--bg:#020712;--panel:rgba(5,20,38,.92);--line:rgba(92,220,255,.22);--cyan:#63e8ff;--green:#55f0ad;--pink:#ff57c7;--muted:#7896b4}
+    *{box-sizing:border-box}
+    html,body{margin:0;min-height:100%;background:radial-gradient(circle at 50% 10%,rgba(28,100,200,.25),transparent 42%),linear-gradient(145deg,#01040b,#061426 58%,#020610);color:#eafaff;font-family:Inter,system-ui,sans-serif}
+    body{display:grid;place-items:center;padding:24px;overflow-x:hidden}
+    body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.32;background:linear-gradient(rgba(99,232,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(99,232,255,.035) 1px,transparent 1px);background-size:32px 32px;mask-image:linear-gradient(to bottom,#000,transparent 92%)}
+    .shell{position:relative;width:min(100%,430px);padding:1px;border:1px solid var(--line);background:linear-gradient(135deg,rgba(99,232,255,.5),rgba(255,87,199,.16),rgba(99,232,255,.08));box-shadow:0 30px 110px rgba(0,0,0,.7),0 0 50px rgba(52,192,255,.12)}
+    .panel{position:relative;padding:25px 22px 22px;background:linear-gradient(160deg,rgba(6,23,43,.98),rgba(2,8,18,.99));overflow:hidden}
+    .panel:after{content:"";position:absolute;left:-20%;right:-20%;top:0;height:1px;background:linear-gradient(90deg,transparent,var(--cyan),transparent);box-shadow:0 0 15px var(--cyan);animation:scan 3.4s linear infinite}
+    @keyframes scan{to{transform:translateY(480px);opacity:.1}}
+    .head{display:flex;align-items:center;gap:10px;font:700 9px monospace;letter-spacing:1.4px;color:#86a9c5}.dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 14px var(--green);animation:blink 1.2s steps(2,end) infinite}@keyframes blink{50%{opacity:.35}}
+    .live{margin-left:auto;color:var(--green);font-size:8px}.brand{margin-top:32px;font:900 clamp(24px,8vw,36px)/1 Orbitron,Inter,sans-serif;letter-spacing:1px;text-align:center;text-shadow:0 0 20px rgba(99,232,255,.4)}.brand span{color:var(--pink)}
+    .sub{text-align:center;margin-top:11px;color:var(--muted);font:700 9px monospace;letter-spacing:3px}
+    .status{margin:26px 0 18px;padding:12px;border:1px solid rgba(99,232,255,.16);background:rgba(4,18,34,.7);color:#a9d9e9;font:700 9px/1.7 monospace;text-transform:uppercase}.status b{color:var(--green)}
+    .keybox{min-height:78px;display:grid;place-items:center;padding:18px 12px;border:1px dashed rgba(99,232,255,.5);background:linear-gradient(110deg,rgba(17,57,86,.5),rgba(4,17,31,.86));color:var(--cyan);font:800 clamp(15px,4.5vw,22px) monospace;letter-spacing:1.5px;text-align:center;word-break:break-all;box-shadow:inset 0 0 24px rgba(34,165,231,.08),0 0 24px rgba(56,202,255,.08)}
+    .copy{width:100%;margin-top:16px;padding:15px 18px;border:1px solid rgba(174,244,255,.6);background:linear-gradient(100deg,#2c7bed,#63e8ff,#2c7bed);background-size:220%;color:#02101c;font:900 12px Space Grotesk,Inter,sans-serif;letter-spacing:1.6px;cursor:pointer;transition:.2s}.copy:hover{background-position:100%;transform:translateY(-2px);box-shadow:0 12px 30px rgba(54,200,255,.25)}.copy:active{transform:scale(.98)}
+    .foot{margin-top:18px;text-align:center;color:#52718f;font:700 8px/1.7 monospace;letter-spacing:1px}.foot strong{color:#75ddff}.error{color:#ff8ecf;text-align:center;font:700 11px/1.6 monospace;padding:26px 8px}
+  </style>
+</head>
+<body>
+  <main class="shell"><section class="panel">
+    <div class="head"><i class="dot"></i><span>SYS://XITEXE/KEY-ISSUER</span><span class="live">SECURE</span></div>
+    <div class="brand">XITEXE <span>KEY</span></div>
+    <div class="sub">ONE-TIME ACCESS CREDENTIAL</div>
+    <div class="status" id="status">&gt; SESSION HANDSHAKE ... <b>CONNECTING</b></div>
+    <div class="keybox" id="key">GENERATING...</div>
+    <button class="copy" id="copy" type="button" disabled>COPY KEY</button>
+    <div class="foot">KEY IS <strong>ONE-TIME</strong> &nbsp;•&nbsp; EXPIRES AUTOMATICALLY<br>RETURN TO XITEXE AND PASTE IT INTO THE UNLOCK FIELD</div>
+  </section></main>
+  <script>
+    firebase.initializeApp({
+      apiKey:'AIzaSyCgLyeHPz9yZFi18tHVf-tCvRV3k8rRugg',
+      authDomain:'my-website-broken.firebaseapp.com',
+      databaseURL:'https://my-website-broken-default-rtdb.europe-west1.firebasedatabase.app',
+      projectId:'my-website-broken',
+      storageBucket:'my-website-broken.firebasestorage.app',
+      messagingSenderId:'372626370117',
+      appId:'1:372626370117:web:6e0c0cc817ab7829b43d2c'
+    });
+    const functions=firebase.app().functions('europe-west1');
+    const session=new URLSearchParams(location.search).get('session');
+    const keyEl=document.getElementById('key');
+    const statusEl=document.getElementById('status');
+    const copyBtn=document.getElementById('copy');
+    let issuedKey='';
+    function fail(message){keyEl.className='error';keyEl.textContent=message;statusEl.innerHTML='&gt; SESSION STATUS ... <b style="color:#ff76c8">DENIED</b>';copyBtn.disabled=true;}
+    if(!session){fail('NO SESSION PROVIDED');}
+    else{
+      functions.httpsCallable('getVplinkKey')({sessionId:session}).then(({data})=>{
+        issuedKey=data.key;keyEl.textContent=issuedKey;copyBtn.disabled=false;statusEl.innerHTML='&gt; KEY ISSUED ... <b>READY TO COPY</b>';document.title='XITEXE // '+(data.itemName||'SECURE KEY');
+      }).catch(()=>fail('SESSION EXPIRED OR ALREADY USED'));
+    }
+    copyBtn.addEventListener('click',async()=>{if(!issuedKey)return;try{await navigator.clipboard.writeText(issuedKey);copyBtn.textContent='KEY COPIED';statusEl.innerHTML='&gt; CLIPBOARD ... <b>COPY COMPLETE</b>';setTimeout(()=>copyBtn.textContent='COPY KEY',1800);}catch(e){statusEl.innerHTML='&gt; COPY FAILED ... <b style="color:#ff76c8">SELECT MANUALLY</b>';}});
+  </script>
+</body>
+</html>
